@@ -21,16 +21,3 @@ var fauxfriend = module.exports = {
     png.pack().pipe(fs.createWriteStream(outfile));
   }
 }
-
-if (typeof require !== 'undefined' && typeof exports !== 'undefined') {
-  exports.fauxfriend = fauxfriend;
-  exports.main = function commonjsMain(args) {
-    var parseArgs = require('minimist')(args);
-    console.dir(parseArgs);
-
-    fauxfriend.generateSingle(parseArgs.l, parseArgs.r, parseArgs.pct, parseArgs.out);
-  }
-  if (typeof module !== 'undefined' && require.main === module) {
-    exports.main(typeof process !== 'undefined' ? process.argv.slice(1) : require("system").args);
-  }
-}
